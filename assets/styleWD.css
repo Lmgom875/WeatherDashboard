@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.mainContainer{
+    background-color: cornsilk;
+    border-radius: 15px;
+    height: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+.sidenav{  
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 113px;
+    width: 300px;
+    /* height: 100%; */
+    padding: 10px;
+    background-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.vertical-align{
+    margin: 1px;
+}
+.content-row{
+    padding-left: 285px;
+    margin: 1px;
+    margin-left: 5px;
+}
+.currentConditions{
+    max-width: 24%;
+    background-color: green;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    margin: 1px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.forecast1{
+    width: 698.5px;
+    flex: none;
+    background-color: blue;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    margin: 1px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.seachBoxText{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.btnGo{
+    background-color: green;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.btnLocation{
+    margin-top: 5px;
+    background-color: blue;
+    border-radius: 10px;
+}
