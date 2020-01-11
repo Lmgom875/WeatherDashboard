@@ -8,10 +8,9 @@ var inputLoc = "Hartford";
 var apiKey = "244e1909ec9b0b408cc09c27f2d725dd";
 var queryURL_Current = "http://api.openweathermap.org/data/2.5/weather?q="+inputLoc+"&units=imperial&appid="+apiKey;
 var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputLoc+"&units=imperial&appid="+apiKey;
+var time = moment().format('MMM DD YYYY');
 
 displayWeatherInfo();
-var time = moment().format('MMM DD YYYY');
-console.log(time);
 
 
 
@@ -34,6 +33,7 @@ function displayWeatherInfo(){
         $("#currentConditions1").append("<h4 id='h4CityName'>"+cityName);
         $("#h4CityName").append("<img id='wicon' src='' alt='Weather Icon'>");
         $("#wicon").attr('src',iconUrl);
+        $("#currentConditions1").append("<h5>"+time);
         $("#currentConditions1").append("<p>Temperature: "+temp+"&#8457;");
         $("#currentConditions1").append("<p>Humidity: "+Humidity+"%");
         $("#currentConditions1").append("<p>Wind Speed: "+windSpeed+" MPH");
