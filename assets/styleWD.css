@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+p, h4{
+    margin: 0;
+}
 .main-title{
     padding: 15px;
     background-color: orange;
@@ -46,7 +49,7 @@
     margin-left: 5px;
 }
 .currentConditions{
-    max-width: 24%;
+    max-width: 25%;
     background-color: green;
     border-style: solid;
     border-radius: 15px;
