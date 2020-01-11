@@ -10,7 +10,8 @@ var queryURL_Current = "http://api.openweathermap.org/data/2.5/weather?q="+input
 var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputLoc+"&units=imperial&appid="+apiKey;
 
 displayWeatherInfo();
-
+var time = moment().format('MMM DD YYYY');
+console.log(time);
 
 
 
@@ -18,7 +19,7 @@ displayWeatherInfo();
 /* Function*/
 /* -------------------------- */
 
-//Function fron get the api info
+//Function for Get and Display weather info
 function displayWeatherInfo(){
     $.ajax({
         url: queryURL_Current,
@@ -27,27 +28,27 @@ function displayWeatherInfo(){
         var cityName = responseCurrent.name;
         var icon = responseCurrent.weather[0].icon;
         var iconUrl = "http://openweathermap.org/img/w/"+icon+".png";
-        var temp = responseCurrent.main.temp;
+        var temp = Math.floor(responseCurrent.main.temp);
         var Humidity = responseCurrent.main.humidity;
-        var windSpeed = responseCurrent.wind.speed;
+        var windSpeed = Math.floor(responseCurrent.wind.speed);
         $("#currentConditions1").append("<h4 id='h4CityName'>"+cityName);
         $("#h4CityName").append("<img id='wicon' src='' alt='Weather Icon'>");
         $("#wicon").attr('src',iconUrl);
-        $("#currentConditions1").append("<p>Temperature: "+temp+"&#8457;</p>");
-        $("#currentConditions1").append("<p>Humidity: "+Humidity+"%</p>");
-        $("#currentConditions1").append("<p>Wind Speed: "+windSpeed+" MPH</p>");
-
-        console.log(responseCurrent);
-        console.log(icon);
-        console.log(iconUrl);
+        $("#currentConditions1").append("<p>Temperature: "+temp+"&#8457;");
+        $("#currentConditions1").append("<p>Humidity: "+Humidity+"%");
+        $("#currentConditions1").append("<p>Wind Speed: "+windSpeed+" MPH");
         })
 }
 
-//Function to put the info on display
-function displayInfo (){
-    $("#currentConditions1").append("<p>"+cityName+"</p>");
+//function for Get and Display forecast info
+// function displayForecastInfo(){
+//     $.ajax({
+//         url: queryURL_5Days,
+//         method: "GET",
+//         }).then(function(response5Days){
 
-}
+//         })
+//}
 
 //function to create locations button
 function createBtnLoc(){
