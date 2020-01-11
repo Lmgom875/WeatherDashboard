@@ -2,17 +2,28 @@
     margin: 0;
     padding: 0;
 }
+.main-title{
+    padding: 15px;
+    background-color: orange;
+    text-align: center;
+}
 .mainContainer{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
     background-color: cornsilk;
     border-radius: 15px;
     height: 100%;
     padding: 10px;
     margin-top: 10px;
 }
+.sideText{
+    margin: 0;
+}
 .sidenav{  
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 85px;
     left: 113px;
     width: 300px;
     /* height: 100%; */
