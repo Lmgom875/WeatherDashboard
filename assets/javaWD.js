@@ -11,6 +11,7 @@ var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputL
 var time = moment().format('MMM DD YYYY');
 
 displayWeatherInfo();
+displayForecastInfo();
 
 
 
@@ -41,14 +42,34 @@ function displayWeatherInfo(){
 }
 
 //function for Get and Display forecast info
-// function displayForecastInfo(){
-//     $.ajax({
-//         url: queryURL_5Days,
-//         method: "GET",
-//         }).then(function(response5Days){
-
-//         })
-//}
+function displayForecastInfo(){
+    $.ajax({
+        url: queryURL_5Days,
+        method: "GET",
+        }).then(function(response5Days){
+            console.log(response5Days);
+            //console.log(response5Days.list.length);
+            for(e = 3; e < response5Days.list.length; e+=8){
+                var forecastUnit = $("<div class='col-3 forecast' id='forecast"+e+"'>");
+                var forecastTemp = Math.floor(response5Days.list[e].main.temp);
+                var forecastHum = response5Days.list[e].main.humidity;
+                var forecastIcon = response5Days.list[e].weather[0].icon;
+                var forecastIconURL = "http://openweathermap.org/img/w/"+forecastIcon+".png";
+                $("#forecastDiv").append(forecastUnit);
+                $("#forecast"+e).append("<img id='wicon"+e+"' src='' alt='Weather Icon'>");
+                $("#wicon"+e).attr('src',forecastIconURL);
+                $("#forecast"+e).append("<p>Temp: "+forecastTemp+"&#8457;");
+                $("#forecast"+e).append("<p>Humidity: "+forecastHum+"%");
+                // $("#currentConditions1").append("<p>Wind Speed: "+windSpeed+" MPH");
+        
+                //console.log($("#forecast"));
+                // console.log(forecastTemp);
+                // console.log(forecastHum);
+                // console.log(forecastIcon);
+                // console.log(forecastIconURL);
+            } 
+        })
+    }
 
 //function to create locations button
 function createBtnLoc(){
