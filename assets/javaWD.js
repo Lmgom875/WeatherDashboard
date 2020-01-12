@@ -4,7 +4,7 @@ $(document).ready(function(){
 /* -------------------------- */
 
 var inputLoc = "Hartford";
-var apiKey = "";
+var apiKey = "244e1909ec9b0b408cc09c27f2d725dd";
 var time = moment().format('MMM DD YYYY');
 var numDays = 1;
 
@@ -77,7 +77,7 @@ function createBtnLoc(){
 //function for clear
 function divsClear(){
     $(".currentConditions").empty();
-    $(".forecast").empty();
+    $(".forecastDiv").empty();
 }
 /* -------------------------- */
 /* Events*/
