@@ -61,7 +61,6 @@ function displayForecastInfo(){
                 $("#wicon"+e).attr('src',forecastIconURL);
                 $("#forecast"+e).append("<p>Temp: "+forecastTemp+"&#8457;");
                 $("#forecast"+e).append("<p>Humidity: "+forecastHum+"%");
-                console.log(numDays);
                 numDays = numDays + 1;
             } 
         })
@@ -70,7 +69,7 @@ function displayForecastInfo(){
 //function to create locations button
 function createBtnLoc(){
     if(inputLoc != ""){
-        $("#locBtn").prepend("<button class='btn btn-default btnLocation' id='btn btnLocation btn-"+inputLoc+"' type='button'>"+inputLoc+"</button>")
+        $("#locBtn").prepend("<button class='btn btn-default btnLocation' id='btn btnLocation btn-"+inputLoc+"' value= '"+inputLoc+"'type='button'>"+inputLoc+"</button>")
     }
 }
 
@@ -83,7 +82,7 @@ function divsClear(){
 /* Events*/
 /* -------------------------- */
 
-
+//Btn go click event
     $("#btnGo").click(function(){
         inputLoc = $("#seachBoxText").val();
         numDays = 1;
@@ -92,4 +91,13 @@ function divsClear(){
         displayWeatherInfo();
         displayForecastInfo();
     });
+
+//Btn Locations click event
+    $("#mainContainer").on('click','.btnLocation',function(){
+        inputLoc = ($(this).val());
+        numDays = 1;
+        divsClear();
+        displayWeatherInfo();
+        displayForecastInfo();
+    })
 });
