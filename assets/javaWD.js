@@ -4,13 +4,11 @@ $(document).ready(function(){
 /* -------------------------- */
 
 var inputLoc = "Hartford";
-var apiKey = "244e1909ec9b0b408cc09c27f2d725dd";
+var apiKey = "";
 var time = moment().format('MMM DD YYYY');
 var numDays = 1;
 
-
-displayWeatherInfo();
-displayForecastInfo();
+apiKeyPrompt();
 
 
 
@@ -78,6 +76,19 @@ function divsClear(){
     $(".currentConditions").empty();
     $(".forecastDiv").empty();
 }
+
+//function for ask about api key
+function apiKeyPrompt(){
+    var apiKeyProm = prompt("Please insert your API key:");
+    if (apiKeyProm != null || apiKeyProm != ""){
+        apiKey = apiKeyProm;
+        displayWeatherInfo();
+        displayForecastInfo();
+    } else {
+        apiKeyPrompt();
+    }
+}
+
 /* -------------------------- */
 /* Events*/
 /* -------------------------- */
