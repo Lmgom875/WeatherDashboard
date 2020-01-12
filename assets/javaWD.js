@@ -3,18 +3,14 @@ $(document).ready(function(){
 /* Variables*/
 /* -------------------------- */
 
-var textBox = "";
 var inputLoc = "Hartford";
-var apiKey = "244e1909ec9b0b408cc09c27f2d725dd";
-var queryURL_Current = "http://api.openweathermap.org/data/2.5/weather?q="+inputLoc+"&units=imperial&appid="+apiKey;
-var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputLoc+"&units=imperial&appid="+apiKey;
+var apiKey = "";
 var time = moment().format('MMM DD YYYY');
 var numDays = 1;
 
 
 displayWeatherInfo();
 displayForecastInfo();
-displayForecastDate();
 
 
 
@@ -24,6 +20,7 @@ displayForecastDate();
 
 //Function for Get and Display weather info
 function displayWeatherInfo(){
+    var queryURL_Current = "http://api.openweathermap.org/data/2.5/weather?q="+inputLoc+"&units=imperial&appid="+apiKey;
     $.ajax({
         url: queryURL_Current,
         method: "GET",
@@ -46,6 +43,7 @@ function displayWeatherInfo(){
 
 //function for Get and Display forecast info
 function displayForecastInfo(){
+    var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputLoc+"&units=imperial&appid="+apiKey;
     $.ajax({
         url: queryURL_5Days,
         method: "GET",
@@ -71,26 +69,27 @@ function displayForecastInfo(){
 
 //function to create locations button
 function createBtnLoc(){
-    textBox = $("#seachBoxText").val();
-    if(textBox != ""){
-        $("#locBtn").prepend("<button class='btn btn-default btnLocation' id='btn btnLocation btn-"+textBox+"' type='button'>"+textBox+"</button></br>")
+    if(inputLoc != ""){
+        $("#locBtn").prepend("<button class='btn btn-default btnLocation' id='btn btnLocation btn-"+inputLoc+"' type='button'>"+inputLoc+"</button>")
     }
 }
 
-//function for put date to forecast
-function displayForecastDate(){
-    for(i=1;i<6;i++){
-        time = moment().add(i,'d').format('MMM DD YYYY');
-        //console.log(time);
-    }
-    }
-
+//function for clear
+function divsClear(){
+    $(".currentConditions").empty();
+    $(".forecast").empty();
+}
 /* -------------------------- */
 /* Events*/
 /* -------------------------- */
 
 
     $("#btnGo").click(function(){
+        inputLoc = $("#seachBoxText").val();
+        numDays = 1;
         createBtnLoc();
+        divsClear();
+        displayWeatherInfo();
+        displayForecastInfo();
     });
 });
