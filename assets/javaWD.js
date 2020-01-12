@@ -9,9 +9,12 @@ var apiKey = "244e1909ec9b0b408cc09c27f2d725dd";
 var queryURL_Current = "http://api.openweathermap.org/data/2.5/weather?q="+inputLoc+"&units=imperial&appid="+apiKey;
 var queryURL_5Days = "http://api.openweathermap.org/data/2.5/forecast?q="+inputLoc+"&units=imperial&appid="+apiKey;
 var time = moment().format('MMM DD YYYY');
+var numDays = 1;
+
 
 displayWeatherInfo();
 displayForecastInfo();
+displayForecastDate();
 
 
 
@@ -47,26 +50,21 @@ function displayForecastInfo(){
         url: queryURL_5Days,
         method: "GET",
         }).then(function(response5Days){
-            console.log(response5Days);
-            //console.log(response5Days.list.length);
             for(e = 3; e < response5Days.list.length; e+=8){
                 var forecastUnit = $("<div class='col-3 forecast' id='forecast"+e+"'>");
+                var forecastDate = moment().add(numDays,'d').format('MMM DD YYYY');
                 var forecastTemp = Math.floor(response5Days.list[e].main.temp);
                 var forecastHum = response5Days.list[e].main.humidity;
                 var forecastIcon = response5Days.list[e].weather[0].icon;
                 var forecastIconURL = "http://openweathermap.org/img/w/"+forecastIcon+".png";
                 $("#forecastDiv").append(forecastUnit);
                 $("#forecast"+e).append("<img id='wicon"+e+"' src='' alt='Weather Icon'>");
+                $("#forecast"+e).append("<p>"+forecastDate);
                 $("#wicon"+e).attr('src',forecastIconURL);
                 $("#forecast"+e).append("<p>Temp: "+forecastTemp+"&#8457;");
                 $("#forecast"+e).append("<p>Humidity: "+forecastHum+"%");
-                // $("#currentConditions1").append("<p>Wind Speed: "+windSpeed+" MPH");
-        
-                //console.log($("#forecast"));
-                // console.log(forecastTemp);
-                // console.log(forecastHum);
-                // console.log(forecastIcon);
-                // console.log(forecastIconURL);
+                console.log(numDays);
+                numDays = numDays + 1;
             } 
         })
     }
@@ -78,6 +76,14 @@ function createBtnLoc(){
         $("#locBtn").prepend("<button class='btn btn-default btnLocation' id='btn btnLocation btn-"+textBox+"' type='button'>"+textBox+"</button></br>")
     }
 }
+
+//function for put date to forecast
+function displayForecastDate(){
+    for(i=1;i<6;i++){
+        time = moment().add(i,'d').format('MMM DD YYYY');
+        //console.log(time);
+    }
+    }
 
 /* -------------------------- */
 /* Events*/
