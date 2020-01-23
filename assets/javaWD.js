@@ -44,7 +44,7 @@ $(document).ready(function () {
 	//function for Get and Display forecast info
 	function displayForecastInfo() {
 		var queryURL_5Days =
-			'http://api.openweathermap.org/data/2.5/forecast?q=' +
+			'https://api.openweathermap.org/data/2.5/forecast?q=' +
 			inputLoc +
 			'&units=imperial&appid=' +
 			apiKey;
